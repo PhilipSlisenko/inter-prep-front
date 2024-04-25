@@ -157,7 +157,6 @@ export default function Page() {
     axios.post(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/register_session`,
       {
-        user_id: userId,
         session_id: sessionId_,
       },
       {
