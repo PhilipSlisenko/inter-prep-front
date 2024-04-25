@@ -191,7 +191,7 @@ export default function Page() {
   const onGenerateSubsequentButtonPress = () => {
     setSubsequentBatchIsLoading(true);
     getQABatchMutation.mutate(
-      { sessionId: sessionId, cv, jobDescription },
+      { sessionId: sessionId, cv, jobDescription, accessToken: accessToken },
       {
         onSuccess(data) {
           setSubsequentBatchIsLoading(false);
@@ -302,9 +302,9 @@ export default function Page() {
                 </PopoverTrigger>
                 <PopoverContent className="w-80">
                   <p className="text-sm text-muted-foreground">
-                    Copy and paste your CV into the text field below. You don't
-                    need to worry about formatting, just copy and paste it "as
-                    is".
+                    Copy and paste your CV into the text field below. You
+                    don&#39;t need to worry about formatting, just copy and
+                    paste it &quot;as is&quot;.
                   </p>
                 </PopoverContent>
               </Popover>
@@ -327,10 +327,10 @@ export default function Page() {
                 <PopoverContent className="w-80">
                   <p className="text-sm text-muted-foreground">
                     Copy and paste job description into the text field below.
-                    You don't need to worry about formatting, just copy and
-                    paste it "as is". <br /> We will use it to generate
-                    questions that are tailored to the CV and job description
-                    that you provide.
+                    You don&#39;t need to worry about formatting, just copy and
+                    paste it &quot;as is&quot;. <br /> We will use it to
+                    generate questions that are tailored to the CV and job
+                    description that you provide.
                   </p>
                 </PopoverContent>
               </Popover>

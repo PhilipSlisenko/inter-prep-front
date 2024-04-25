@@ -37,6 +37,7 @@ export default function TopUpModal({
               variant={variant as any}
               userEmail={userEmail}
               userSub={userSub}
+              key={variant}
             />
           ))}
         </div>

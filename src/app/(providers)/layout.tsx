@@ -3,7 +3,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 const queryClient = new QueryClient();
 export default function Layout({ children }: React.PropsWithChildren) {
   return (
@@ -15,7 +15,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
       // }}
     >
       <QueryClientProvider client={queryClient}>
-        {children}
+        <Suspense>{children}</Suspense>
         <Toaster />
       </QueryClientProvider>
     </Auth0Provider>

@@ -56,7 +56,7 @@ export default function ShareFeedbackButton({ userId }: { userId: string }) {
         <DialogHeader>
           <DialogTitle>Feedback</DialogTitle>
           <DialogDescription>
-            What didn't you like about the generated content, or about your
+            What didn&#39;t you like about the generated content, or about your
             experience with us in general? How can we improve?
           </DialogDescription>
         </DialogHeader>
