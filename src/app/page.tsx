@@ -1,7 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
-  router.push(`/app`);
+  redirect("/landing");
+  // const router = useRouter();
+  // router.push(`/app`);
+  // return "";
 }
