@@ -13,13 +13,10 @@ export const generateQAPairs = async ({
   jobDescription: string;
   accessToken: string;
 }): Promise<{ status: "success" | "prompt_to_top_up"; qa_pairs: QAPair[] }> => {
-  const userId = localStorage.getItem("ip-user-id") as string;
-  console.log(`authToken:\n${accessToken}\n${JSON.stringify(accessToken)}`);
   const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/generate_qa_batch`,
     {
       params: {
-        user_id: userId,
         session_id: sessionId,
         cv,
         job_description: jobDescription,

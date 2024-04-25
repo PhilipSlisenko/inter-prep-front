@@ -30,12 +30,19 @@ export function useLoginHook() {
         authorizationParams: {
           audience: "inter-prep-api",
         },
-      }).then((token) => setAccessToken(token));
-      axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/handle_log_in`,
-        {},
-        { params: { user_id: user?.sub } }
-      );
+      }).then((token) => {
+        setAccessToken(token);
+        axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/handle_log_in`,
+          {},
+          {
+            params: { user_id: user?.sub },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      });
     }
   }, [isLoading, isAuthenticated]);
 

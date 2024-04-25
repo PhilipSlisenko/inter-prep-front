@@ -90,7 +90,12 @@ export default function Page() {
     queryFn: async () => {
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/get_cv_and_job_description`,
-        { params: { session_id: sessionId } }
+        {
+          params: { session_id: sessionId },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
       );
       console.log(data);
       return data;
@@ -113,7 +118,12 @@ export default function Page() {
     queryFn: async () => {
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/get_qas`,
-        { params: { session_id: sessionId } }
+        {
+          params: { session_id: sessionId },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
       );
       return data;
     },
@@ -144,10 +154,18 @@ export default function Page() {
     setQAPairs([]);
 
     // register new session
-    axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/register_session`, {
-      user_id: userId,
-      session_id: sessionId_,
-    });
+    axios.post(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/register_session`,
+      {
+        user_id: userId,
+        session_id: sessionId_,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
 
     // post to /log_cv_and_job_description in body cv and job description
     axios.post(
@@ -156,6 +174,11 @@ export default function Page() {
         session_id: sessionId_,
         cv,
         job_description: jobDescription,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       }
     );
 
@@ -231,7 +254,12 @@ export default function Page() {
     queryFn: async () => {
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/get_qa_session_ids`,
-        { params: { user_id: userId } }
+        {
+          params: { user_id: userId },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
       );
       console.log(data);
       return data["session_ids"];

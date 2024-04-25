@@ -14,7 +14,13 @@ import axios from "axios";
 import { CheckCircleIcon } from "lucide-react";
 import { useState } from "react";
 
-export default function ShareFeedbackButton({ userId }: { userId: string }) {
+export default function ShareFeedbackButton({
+  userId,
+  accessToken,
+}: {
+  userId: string;
+  accessToken: string;
+}) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const [feedback, setFeedback] = useState("");
@@ -39,7 +45,15 @@ export default function ShareFeedbackButton({ userId }: { userId: string }) {
         user_id: userId,
         content: feedback,
       };
-      axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/feedback`, feedback_);
+      axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/feedback`,
+        feedback_,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
     }
   };
 
