@@ -11,7 +11,7 @@ export default function LandingPage() {
             {/* Interview preparation that is tailored to you */}
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
-            Get interview questions that are tailored to you
+            Get interview questions that are specifically tailored to you
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button asChild={true} size={"lg"}>
